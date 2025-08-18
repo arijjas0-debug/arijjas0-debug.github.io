@@ -1,0 +1,88 @@
+* {
+  
+}
+body {
+    min-height: 100vh;
+    background-image: url('background-bod.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrap {
+   color: 
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   flex-wrap: wrap;
+}
+dialog {
+    border-radius: 20px;
+    width: 300px;
+    height: 125px;
+    display: ;
+    flex-direction: column;
+    align-content: center;
+    background-color: #0000009a;
+    backdrop-filter: blur(2px);
+}
+dialog input {
+    position: relative;
+    left: 15px;
+    top: 25px;
+}
+dialog label {
+    position: relative;
+    left: 5px; top: 25px;
+    font-family: fantasy;
+    color: white;
+}
+dialog button {
+    position: relative;
+    left: 100px; top: 40px;
+}
+.a {
+    color: aqua;
+    text-shadow: 4px 4px 3px black;
+    font-family: bold;
+    margin-bottom: 10px;
+    position: relative;
+    left: 5px;
+}
+h1 {
+    color: yellow;
+    text-shadow: 4px 4px 3px black;
+    font-family: bold;
+    
+}
+.wrap button {
+    position: relative;
+    right: -10px;
+    width: 80px;
+    border-radius: 15px;
+    border: none;
+    height: 20px;
+    background-image: linear-gradient(to left, #2700ff, #7b00ff);
+    font-family: fantasy;
+    box-shadow: 2px 2px 4px #ba00ff;
+    color: white;
+}
+.by {
+    position: relative;
+    bottom: -75px; left: 30px;
+    color: white;
+    font-family: fantasy;
+    font-size: 12.5px;
+}
+.salah {
+    color: red;
+    position: relative;
+    top: 35px; left: 105px;
+    font-size: 10px;
+    
+}
