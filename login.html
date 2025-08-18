@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial scale=1.0"/>
+    <title>Login</title>
+    <link rel="icon" href="com.jpg" >    
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="wrap">
+        <h2 class="a">Uang Kas</h2>
+        <h1>XI TKJ 1</h1>
+        
+        <dialog id="login-dialog">
+            
+           
+            <label>Password</label>
+            <input id="pass" type="text">
+            <div id="salah" class="salah"></div>
+            <button onClick="masuk()">Masuk</button>
+        </dialog>
+        <button onClick="masuk1()">masuk</button>
+        <div class="by">By Arij</div>   
+    </div>
+    
+    <script>
+        
+        const dialog = document.getElementById("login-dialog");
+ 
+       
+        function masuk1(){
+            dialog.showModal()
+            const body = document.querySelector("body");
+            body.style.backdropFilter = "blur(1px)";
+        }
+  
+        function masuk(){
+            const pass = document.getElementById("pass").value;
+      
+            if(pass=="Nouzen"){
+                alert('Berhasil login');
+                sessionStorage.setItem("anjay", " ankay");
+                window.location.replace("file:///storage/emulated/0/Android/data/com.teejay.trebedit/files/TrebEdit%20user%20files/KasXITkj1/test.html");
+            }else if(1>>pass.length){
+                document.getElementById("salah").innerHTML = "Password belum diisi";
+                
+            }else {
+                document.getElementById("salah").innerHTML = "Password Salah";
+            }
+        }
+        const bd = document.querySelector("body");
+           if(localStorage.st_g=="background"){
+               bd.style.backgroundImage = "url('background.jpeg')";
+           }
+           if(localStorage.st_g=="background1"){
+               bd.style.backgroundImage = "url('background1.jpeg')";
+           }
+           if(localStorage.st_g=="background2"){
+               bd.style.backgroundImage = "url('background2.jpeg')";
+           }
+           if(localStorage.st_g=="background4"){
+               bd.style.backgroundImage = "url('background4.jpeg')";
+           }
+    </script>
+</body>
+</html>
