@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial scale=1.0"/>
+    <title>Uang kas XI TKJ 1</title>
+    <link rel="stylesheet" href="in.css"
+</head>
+<body>
+    <style>
+        @keyframes plusmin {
+            0% {
+              margin-top: 350px;
+              opacity: 1;
+            }
+    
+        
+    
+           100% {
+             margin-top: 325px;
+             opacity: 0;
+           }
+        }
+        #min {
+            animation-iteration-count = infinite;
+        }
+    </style>
+    <audio id="suaraClick" src="bell.mp3"></audio>
+    <h5 id="plus">+Rp.8000</h5>
+    <h5 id="min">Rp</h5>
+    <nav class="side">
+        <ul class="sidebar" id="sidebar">
+            <li onClick="hidebar()" <a href="#" class="close">-></a></a></li>
+         
+            <li><a href="uang_kas_harian.html">Kas harian</a></li>
+            <li><a href="https://wa.me/6281546963708?text=Help%20me">Help</a></li>
+            <li><a href="tema.html">Tema</a></li>
+            
+            
+        </ul>
+    </nav>
+    <nav class="os">
+        <ul>
+            <li class="home"><a href="#">Home</a></li>
+            
+            <li class="hideOnMobile"><a href="uang_kas_harian.html">Uang kas harian</a></li>
+            <li class="hideOnMobile"><a href="https://wa.me/6281546963708?text=Help%20me">Help</a></li>
+            <li class="hideOnMobile"><a href="tema.html">Tema</a></li>
+          
+            <li onClick="sidebar()" <a href="#" class="menu"></a></li>
+        </ul>
+    </nav>
+    <div class="utama">
+        <video autoplay muted loop id="video">
+            <source src="shiroko.mp4" type="video/mp4"></source>
+        </video>
+        <div class="total_uang"></div>
+        <div class="masuk,ambil">
+            
+        </div>
+        <div class="ambil,masuk2">
+         <div class="ambil2">
+            <label>Alasan : </label>
+            <input type="text" class="alasan" id="alasan">
+           
+            <div class="jumlah_ambil">
+              <label>Rp.</label>
+              <input type="number" class="jumlah">
+              <button onClick="ambil2()">ambil</button>
+              <button onclick="masuk2()">masuk</button>
+            </div>
+         </div>
+        
+        </div>
+        <div class="wadah">
+         <button onClick="tampilkan()" class="riwayat">Tampilkan Riwayat</button>
+         <button onClick="sembunyikan()" class="riwayat">sembunyikan</button>
+        </div>
+        <div class="container">
+            <ul id="date" class="z">
+                
+            </ul>
+            <ul id="alasan/dari" class="z">
+                <li>alasan</li>
+                <li></li>
+            </ul>
+            <ul id="jumlah_li" class="z">
+                <li>buk</li>
+                <li>Rp.80000</li>
+            </ul>
+            <ul id="sisa" class="z">
+                <li>bb</li>
+                <li>Rp.180000</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        
+        const plus = document.getElementById("plus");
+        const min = document.getElementById("min");
+        document.querySelector(".total_uang").innerHTML = "Rp." + localStorage.total_uang;
+       
+        const uang = document.getElementById("alasan").value;
+        localStorage.setItem("uang", uang);
+        dt = new Date();
+        const hari = dt.getDay();
+        const month = dt.getMonth();
+        const tanggal = dt.getDate();
+        const tahun = dt.getFullYear();
+        const hariarray = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis","Jum'at","Sabtu"];
+        const day = hariarray[hari];
+        const montharray = ["Januari","Februari","Maret","April","Mei","Juni","juli","Agustus","September","Oktober","November","Desember"];
+        const bulan = montharray[month];
+        localStorage.setItem("date", day + "," + tanggal + " " + bulan + " " + tahun);
+        const riwayat = document.querySelector(".container");
+        if(day=="Sabtu"){
+            localStorage.setItem("imbang", "belum");
+        }
+        function sidebar(){
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.display = "flex";
+        }
+        function hidebar(){
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.display = "none";
+        }
+        let listData = [];
+        let listData2 = [];
+        let listData3 = [];
+        let listData4 = [];
+
+           // Fungsi untuk menyimpan data ke local storage
+           function saveData() {
+               localStorage.setItem('myListData', JSON.stringify(listData));
+               localStorage.setItem('myListData2', JSON.stringify(listData2));
+               localStorage.setItem('myListData3', JSON.stringify(listData3));
+               localStorage.setItem('myListData4', JSON.stringify(listData4));
+           }
+
+           // Fungsi untuk mengambil data dari local storage
+           function loadData() {
+               
+               const storedData = localStorage.getItem('myListData');
+               if (storedData) {
+                   listData = JSON.parse(storedData);
+                   renderList();
+               }
+               const storedData2 = localStorage.getItem('myListData2');
+               if (storedData2) {
+                   listData2 = JSON.parse(storedData2);
+                   renderList();
+               }
+               const storedData3 = localStorage.getItem('myListData3');
+               if (storedData3) {
+                   listData3 = JSON.parse(storedData3);
+                   renderList();
+               }
+               const storedData4 = localStorage.getItem('myListData4');
+               if (storedData4) {
+                   listData4 = JSON.parse(storedData4);
+                   renderList();
+               }
+           }
+           
+           function ambil2() {
+               const jum = document.querySelector(".jumlah").value;
+               var audio = document.getElementById("suaraClick");
+               audio.play();
+               const newItemText = localStorage.date;
+               if (newItemText.trim() !== '') { // Pastikan tidak kosong
+                   listData.push(newItemText);
+                   saveData();
+                   renderList();
+                   
+               }
+               const newItemText2 = document.getElementById("alasan").value;
+            // Pastikan tidak kosong
+               listData2.push(newItemText2);
+               
+               saveData();
+               renderList();
+               document.getElementById('alasan').value = ''; // Bersihkan input
+               
+               const total_uang = document.querySelector(".jumlah").value;
+               
+               const newItemText3 = "-Rp" + total_uang;
+               const bo = newItemText3;
+               min.style.display = "flex";
+               min.style.transition = "0.5s";
+               min.style.marginTop = "325px";
+               min.innerHTML = bo;
+               
+               min.style.display = "flex";
+               
+            // Pastikan tidak kosong
+               listData3.push(newItemText3);
+               const jumlah = document.querySelector(".jumlah");
+               saveData();
+               renderList();
+               document.querySelector('.jumlah').value = ''; // Bersihkan input
+               
+               
+               
+               
+               total_uang_s = localStorage.total_uang;
+               localStorage.setItem("total_uang", +total_uang_s - +total_uang);
+               document.querySelector(".total_uang").innerHTML = "Rp." + localStorage.total_uang;
+           
+           
+           const newItemText4 = localStorage.total_uang;
+            // Pastikan tidak kosong
+               listData4.push(newItemText4);
+               
+               saveData();
+               renderList();
+           }
+           
+           function masuk2() {
+               var audio = document.getElementById("suaraClick");
+               audio.play();
+               const newItemText = localStorage.date;
+               if (newItemText.trim() !== '') { // Pastikan tidak kosong
+                   listData.push(newItemText);
+                   saveData();
+                   renderList();
+                   
+               }
+               const newItemText2 = document.getElementById("alasan").value;
+            // Pastikan tidak kosong
+               listData2.push(newItemText2);
+               
+               saveData();
+               renderList();
+               document.getElementById('alasan').value = ''; // Bersihkan input
+               
+               const total_uang = document.querySelector(".jumlah").value;
+               const newItemText3 = "+Rp" + total_uang;
+            // Pastikan tidak kosong
+               listData3.push(newItemText3);
+               const jumlah = document.querySelector(".jumlah");
+               saveData();
+               renderList();
+               document.querySelector('.jumlah').value = ''; // Bersihkan input
+               
+               
+               
+               
+               total_uang_s = localStorage.total_uang;
+               localStorage.setItem("total_uang", +total_uang_s + +total_uang);
+               document.querySelector(".total_uang").innerHTML = "Rp." + localStorage.total_uang;
+           
+           
+           const newItemText4 = localStorage.total_uang;
+            // Pastikan tidak kosong
+               listData4.push(newItemText4);
+               
+               saveData();
+               renderList();
+           }
+           
+           // Fungsi untuk menampilkan list
+           function renderList() {
+               const listElement = document.getElementById('date');
+               listElement.innerHTML = ''; // Hapus item sebelumnya
+               listData.forEach(item => {
+                   const listItem = document.createElement('li');
+                   listItem.textContent = item;
+                   listElement.appendChild(listItem);
+               });
+               const listElement2 = document.getElementById('alasan/dari');
+               listElement2.innerHTML = ''; // Hapus item sebelumnya
+               listData2.forEach(item => {
+                   const listItem2 = document.createElement('li');
+                   listItem2.textContent = item;
+                   listElement2.appendChild(listItem2);
+               });
+               const listElement3 = document.getElementById('jumlah_li');
+               listElement3.innerHTML = ''; // Hapus item sebelumnya
+               listData3.forEach(item => {
+                   const listItem3 = document.createElement('li');
+                   listItem3.textContent = item;
+                   listElement3.appendChild(listItem3);
+               });
+               const listElement4 = document.getElementById('sisa');
+               listElement4.innerHTML = ''; // Hapus item sebelumnya
+               listData4.forEach(item => {
+                   const listItem4 = document.createElement('li');
+                   listItem4.textContent = item;
+                   listElement4.appendChild(listItem4);
+               });
+           }
+
+           // Fungsi untuk menambahkan item baru
+           
+
+           // Muat data saat halaman dimuat
+           loadData();
+           const st = "hilang"
+           function tampilkan(){
+               riwayat.style.display = "flex";
+                   
+               
+           }
+           function sembunyikan(){
+               riwayat.style.display = "none";
+           }
+           const video = document.getElementById("video");
+           if(localStorage.st_v=="shiroko"){
+               video.src = 'shiroko.mp4';
+               video.load();
+               video.play();
+           }
+           if(localStorage.st_v=="neko1"){
+               video.src = 'neko1.mp4';
+               video.load();
+               video.play();
+           }
+           if(localStorage.st_v=="neko2"){
+               video.src = 'neko2.mp4';
+               video.load();
+               video.play();
+           }
+           if(localStorage.st_v=="furina"){
+               video.src = 'furina.mp4';
+               video.load();
+               video.play();
+           }
+           const bd = document.querySelector("body");
+           if(localStorage.st_g=="background"){
+               bd.style.backgroundImage = "url('background.jpeg')";
+           }
+           if(localStorage.st_g=="background1"){
+               bd.style.backgroundImage = "url('background1.jpeg')";
+           }
+           if(localStorage.st_g=="background2"){
+               bd.style.backgroundImage = "url('background2.jpeg')";
+           }
+           if(localStorage.st_g=="background4"){
+               bd.style.backgroundImage = "url('background4.jpeg')";
+           }
+           
+    </script>
+</body>
+</html>
