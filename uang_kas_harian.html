@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial scale=1.0"/>
+    <title>Kas harian</title>
+    <link rel="stylesheet" href="kas.css"
+</head>
+<body>
+    <audio id="suaraClick" src="bell.mp3"></audio>
+    <dialog id="dialog">
+        <input type="number" id="tu">
+        <div id="ol"></div>
+        <button onclick="ok()">ok</button>
+    </dialog>
+    <nav>
+        <button onclick="home()" class="home"></button>
+        <h1>Uang Kas Harian</h1>
+        <button class="reset" onclick="reset()">Restart</button>
+    </nav>
+    <div class="container">
+        <div class="wadah">
+            <button id="td"></button>
+     
+        </div>
+        <div class="kasandriwayat">
+            <div class="kas_harian">
+                
+                <div class="alam" id="z">
+                    <div>1. Alam jaya</div>
+                    <div class="tr_alam"></div>
+                    <div><button onclick="alamBayar()">500</button></div>
+                    <div class="tg_alam" onclick="tunggakan_alam()"></div>
+                </div>
+                <div class="arij" id="z">
+                    <div>2. Arij al fajar</div>
+                    <div class="tr_arij"></div>
+                    <div>
+                        <button onclick="arijBayar()">500</button>
+                    </div>
+                    <div class="tg_arij" onclick="tunggakan_arij()"></div>
+                </div>
+                <div class="arwani" id="z">
+                    <div>3. Arwani</div>
+                    <div class="tr_arwani"></div>
+                    <div><button onclick="arwaniBayar()">500</button></div>
+                    <div class="tg_arwani" onclick="tunggakan_arwani()"></div>
+                </div>
+                <div class="Ayu" id="z">
+                    <div>4. Ayu dian</div>
+                    <div class="tr_ayu"></div>
+                    <div>
+                        <button onclick="ayuBayar()">500</button>
+                    </div>
+                    <div class="tg_ayu" onclick="tunggakan_ayu()"></div>
+                </div>
+                <div class="cari" id="z">
+                    <div>5. Cari nuryawati</div>
+                    <div class="tr_cari"></div>
+                    <div><button onclick="cariBayar()">500</button></div>
+                    <div class="tg_cari" onclick="tunggakan_cari()"></div>
+                </div>
+                <div class="amel" id="z">
+                    <div>6. Fitri amelia</div>
+                    <div class="tr_amel"></div>
+                    <div>
+                        <button onclick="amelBayar()">500</button>
+                    </div>
+                    <div class="tg_amel" onclick="tunggakan_amel()"></div>
+                </div>
+                <div class="ila"id="z">
+                    <div>7. Ila sakila</div>
+                    <div class="tr_ila"></div>
+                    <div>
+                        <button onclick="ilaBayar()">500</button>
+                    </div>
+                    <div class="tg_ila" onclick="tunggakan_ila()"></div>
+                </div>
+                <div class="mualim" id="z">
+                    <div>8. Mualim</div>
+                    <div class="tr_mualim"></div>
+                    <div>
+                        <button onclick="mualimBayar()">500</button>
+                    </div>
+                    <div class="tg_mualim" onclick="tunggakan_mualim()"></div>
+                </div>
+            </div>
+         
+        </div>
+    </div>
+    <script>
+        dt = new Date();
+        const hari = dt.getDay();
+        const month = dt.getMonth();
+        const tanggal = dt.getDate();
+        const tahun = dt.getFullYear();
+        const hariarray = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis","Jum'at","Sabtu"];
+        const day = hariarray[hari];
+        const montharray = ["Januari","Februari","Maret","April","Mei","Juni","juli","Agustus","September","Oktober","November","Desember"];
+        const bulan = montharray[month];
+        const td = document.getElementById("td");
+        document.getElementById("td").innerHTML = localStorage.date;
+        const res = document.querySelector(".reset");
+        if(day=="Minggu"){
+           if(localStorage.imbang=="belum"){
+           
+            localStorage.setItem("expired", "ex");
+            localStorage.setItem("restart", "boleh");
+            localStorage.setItem("imbang", "sudah");
+           }
+        }
+        if(day=="Sabtu"){
+            localStorage.setItem("imbang", "belum");
+        }
+        if(localStorage.expired=="ex"){
+            td.style.backgroundColor = "red";
+            
+        }
+        
+        if(localStorage.expired=="no"){
+            td.style.backgroundColor = "aqua";
+        }
+        
+        if(localStorage.restart=="tdk"){
+            res.style.opacity = "0.5";
+        }
+        
+        if(localStorage.restart=="boleh"){
+            res.style.opacity = "1";
+        }
+        
+        const ol = document.getElementById("ol");
+        const dialog = document.getElementById("dialog");
+        
+        function tunggakan_alam(){
+            dialog.showModal();
+            localStorage.setItem("status_tu", "alam");
+        }
+        function tunggakan_arij(){
+            dialog.showModal();
+            localStorage.setItem("status_tu", "arij");
+        }
+        function tunggakan_arwani(){
+            dialog.showModal();
+            localStorage.setItem("status_tu", "arwani");
+        }
+        function tunggakan_ayu(){
+            dialog.showModal();
+            localStorage.setItem("status_tu", "ayu");
+        }
+        function tunggakan_cari(){
+            dialog.showModal();
+            localStorage.setItem("status_tu", "cari");
+        }
+        function tunggakan_amel(){
+            dialog.showModal();
+            localStorage.setItem("status_tu", "amel");
+        }
+        function tunggakan_ila(){
+            dialog.showModal();
+            localStorage.setItem("status_tu", "ila");
+        }
+        function tunggakan_mualim(){
+            dialog.showModal();
+            localStorage.setItem("status_tu", "mualim");
+        }
+        function ok(){
+            const bayar_tunggakan = document.getElementById("tu").value;
+            const isi = document.getElementById("tu");
+            if(localStorage.status_tu=="alam"){
+                const lebih = +localStorage.tunggakan_alam - +bayar_tunggakan;
+                if(lebih>=0){
+                    const total_uang = localStorage.total_uang;
+                    localStorage.setItem("total_uang", +total_uang + +bayar_tunggakan);
+                    const tunggakan_alam = localStorage.tunggakan_alam;
+                    localStorage.setItem("tunggakan_alam", +tunggakan_alam - +bayar_tunggakan);
+                    document.querySelector(".tg_alam").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_alam;
+                    dialog.close();
+                    isi.value = "";
+                    ol.innerHTML = "";
+                }if(1>>lebih){
+                    isi.value = "";
+                    ol.innerHTML = "jangan Melebihi batas";
+                    
+                }
+            }
+            if(localStorage.status_tu=="arij"){
+                const lebih = +localStorage.tunggakan_arij - +bayar_tunggakan;
+                if(lebih>=0){
+                    
+                    const total_uang = localStorage.total_uang;
+                    localStorage.setItem("total_uang", +total_uang + +bayar_tunggakan);
+                    const tunggakan_arij = localStorage.tunggakan_arij;
+                    localStorage.setItem("tunggakan_arij", +tunggakan_arij - +bayar_tunggakan);
+                    document.querySelector(".tg_arij").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_arij;
+                    dialog.close();
+                    isi.value = "";
+                    ol.innerHTML = "";
+                }if(1>>lebih){
+                    isi.value = "";
+                    ol.innerHTML = "jangan Melebihi batas";
+                    
+                }
+            }
+            if(localStorage.status_tu=="arwani"){
+                const lebih = +localStorage.tunggakan_arwani - +bayar_tunggakan;
+                if(lebih>=0){
+                    const total_uang = localStorage.total_uang;
+                    localStorage.setItem("total_uang", +total_uang + +bayar_tunggakan);
+                    const tunggakan_arwani = localStorage.tunggakan_arwani;
+                    localStorage.setItem("tunggakan_arwani", +tunggakan_arwani - +bayar_tunggakan);
+                    document.querySelector(".tg_arwani").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_arwani;
+                    dialog.close();
+                    isi.value = "";
+                    ol.innerHTML = "";
+                }if(1>>lebih){
+                    isi.value = "";
+                    ol.innerHTML = "jangan Melebihi batas";
+                    
+                }
+            }
+            if(localStorage.status_tu=="ayu"){
+                const lebih = +localStorage.tunggakan_ayu - +bayar_tunggakan;
+                if(lebih>=0){
+                    const total_uang = localStorage.total_uang;
+                    localStorage.setItem("total_uang", +total_uang + +bayar_tunggakan);
+                    const tunggakan_ayu = localStorage.tunggakan_ayu;
+                    localStorage.setItem("tunggakan_ayu", +tunggakan_ayu - +bayar_tunggakan);
+                    document.querySelector(".tg_ayu").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_ayu;
+                    dialog.close();
+                    isi.value = "";
+                    ol.innerHTML = "";
+                }if(1>>lebih){
+                    isi.value = "";
+                    ol.innerHTML = "jangan Melebihi batas";
+                    
+                }
+            }
+            if(localStorage.status_tu=="cari"){
+                const lebih = +localStorage.tunggakan_cari - +bayar_tunggakan;
+                if(lebih>=0){
+                    const total_uang = localStorage.total_uang;
+                    localStorage.setItem("total_uang", +total_uang + +bayar_tunggakan);
+                    const tunggakan_cari = localStorage.tunggakan_cari;
+                    localStorage.setItem("tunggakan_cari", +tunggakan_cari - +bayar_tunggakan);
+                    document.querySelector(".tg_cari").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_cari;
+                    dialog.close();
+                    isi.value = "";
+                    ol.innerHTML = "";
+                }if(1>>lebih){
+                    isi.value = "";
+                    ol.innerHTML = "jangan Melebihi batas";
+                    
+                }
+            }
+            if(localStorage.status_tu=="amel"){
+                const lebih = +localStorage.tunggakan_amel - +bayar_tunggakan;
+                if(lebih>=0){
+                    const total_uang = localStorage.total_uang;
+                    localStorage.setItem("total_uang", +total_uang + +bayar_tunggakan);
+                    const tunggakan_amel = localStorage.tunggakan_amel;
+                    localStorage.setItem("tunggakan_amel", +tunggakan_amel - +bayar_tunggakan);
+                    document.querySelector(".tg_amel").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_amel;
+                    dialog.close();
+                    isi.value = "";
+                    ol.innerHTML = "";
+                }if(1>>lebih){
+                    isi.value = "";
+                    ol.innerHTML = "jangan Melebihi batas";
+                    
+                }
+            }
+            if(localStorage.status_tu=="ila"){
+                const lebih = +localStorage.tunggakan_ila - +bayar_tunggakan;
+                if(lebih>=0){
+                    const total_uang = localStorage.total_uang;
+                    localStorage.setItem("total_uang", +total_uang + +bayar_tunggakan);
+                    const tunggakan_ila = localStorage.tunggakan_ila;
+                    localStorage.setItem("tunggakan_ila", +tunggakan_ila - +bayar_tunggakan);
+                    document.querySelector(".tg_ila").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_ila;
+                    dialog.close();
+                    isi.value = "";
+                    ol.innerHTML = "";
+                }if(1>>lebih){
+                    isi.value = "";
+                    ol.innerHTML = "jangan Melebihi batas";
+                    
+                }
+            }
+            if(localStorage.status_tu=="mualim"){
+                const lebih = +localStorage.tunggakan_mualim - +bayar_tunggakan;
+                if(lebih>=0){
+                    const total_uang = localStorage.total_uang;
+                    localStorage.setItem("total_uang", +total_uang + +bayar_tunggakan);
+                    const tunggakan_mualim = localStorage.tunggakan_mualim;
+                    localStorage.setItem("tunggakan_mualim", +tunggakan_mualim - +bayar_tunggakan);
+                    document.querySelector(".tg_mualim").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_mualim;
+                    dialog.close();
+                    isi.value = "";
+                    ol.innerHTML = "";
+                }if(1>>lebih){
+                    isi.value = "";
+                    ol.innerHTML = "jangan Melebihi batas";
+                    
+                }
+            }
+        }
+        document.querySelector(".tg_alam").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_alam;
+        document.querySelector(".tr_alam").innerHTML = "Rp." + localStorage.kas_alam;
+        document.querySelector(".tg_arij").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_arij;
+        document.querySelector(".tr_arij").innerHTML = "Rp." + localStorage.kas_arij;
+        document.querySelector(".tg_arwani").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_arwani;
+        document.querySelector(".tr_arwani").innerHTML = "Rp." + localStorage.kas_arwani;
+        const riwayat = document.querySelector(".kas_riwayat");
+        const kh = document.querySelector(".kas_harian");
+        
+        
+        function alamBayar(){
+         if(localStorage.kas_alam>>1){
+            const bayar_kas_alam = 500;
+            const kas_alam = localStorage.kas_alam;
+            const total_uang = localStorage.total_uang;
+            localStorage.setItem("total_uang", +total_uang + +bayar_kas_alam);
+            localStorage.setItem("kas_alam", +kas_alam - +bayar_kas_alam);
+            document.querySelector(".tr_alam").innerHTML = " Rp." + localStorage.kas_alam;
+            
+            const penghasilan_s = localStorage.penghasilan_s;
+            localStorage.setItem("penghasilan_s", +penghasilan_s + +bayar_kas_alam);
+            
+         }
+         
+        }
+    
+        function reset(){
+           if(localStorage.restart=="boleh"){
+            res.style.opacity = "0.5";
+            localStorage.setItem("expired", "no");
+            localStorage.setItem("restart", "tdk");
+            td.style.backgroundColor = "aqua";
+            var audio = document.getElementById("suaraClick");
+            audio.play();
+            localStorage.setItem("td", localStorage.date);
+            document.getElementById("td").innerHTML = localStorage.td;
+            const tunggakan_alam_s = localStorage.kas_alam;
+            const tunggakan_alam = localStorage.tunggakan_alam;
+            localStorage.setItem("tunggakan_alam", +tunggakan_alam + +tunggakan_alam_s);
+            document.querySelector(".tg_alam").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_alam;
+            localStorage.setItem("kas_alam", 3000);
+            document.querySelector(".tr_alam").innerHTML = "Rp." + localStorage.kas_alam;
+            
+            const penghasilan_s = localStorage.penghasilan_s;
+            
+            const penghasilan = localStorage.penghasilan;
+            localStorage.setItem("penghasilan", +penghasilan + +penghasilan_s);
+            localStorage.setItem("penghasilan_s", 0);
+            
+            const tunggakan_arij_s = localStorage.kas_arij;
+            const tunggakan_arij = localStorage.tunggakan_arij;
+            localStorage.setItem("tunggakan_arij", +tunggakan_arij + +tunggakan_arij_s);
+            document.querySelector(".tg_arij").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_arij;
+            localStorage.setItem("kas_arij", 3000);
+            document.querySelector(".tr_arij").innerHTML = "Rp." + localStorage.kas_arij;
+            
+            const tunggakan_arwani_s = localStorage.kas_arwani;
+            const tunggakan_arwani = localStorage.tunggakan_arwani;
+            localStorage.setItem("tunggakan_arwani", +tunggakan_arwani + +tunggakan_arwani_s);
+            document.querySelector(".tg_arwani").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_arwani;
+            localStorage.setItem("kas_arwani", 3000);
+            document.querySelector(".tr_arwani").innerHTML = "Rp." + localStorage.kas_arwani;
+           
+           
+            const tunggakan_ayu_s = localStorage.kas_ayu;
+            const tunggakan_ayu = localStorage.tunggakan_ayu;
+            localStorage.setItem("tunggakan_ayu", +tunggakan_ayu + +tunggakan_ayu_s);
+            document.querySelector(".tg_ayu").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_ayu;
+            localStorage.setItem("kas_ayu", 3000);
+            document.querySelector(".tr_ayu").innerHTML = "Rp." + localStorage.kas_ayu;
+           
+            const tunggakan_cari_s = localStorage.kas_cari;
+            const tunggakan_cari = localStorage.tunggakan_cari;
+            localStorage.setItem("tunggakan_cari", +tunggakan_cari + +tunggakan_cari_s);
+            document.querySelector(".tg_cari").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_cari;
+            localStorage.setItem("kas_cari", 3000);
+            document.querySelector(".tr_cari").innerHTML = "Rp." + localStorage.kas_cari; 
+            
+            
+            const tunggakan_amel_s = localStorage.kas_amel;
+            const tunggakan_amel = localStorage.tunggakan_amel;
+            localStorage.setItem("tunggakan_amel", +tunggakan_amel + +tunggakan_amel_s);
+            document.querySelector(".tg_amel").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_amel;
+            localStorage.setItem("kas_amel", 3000);
+            document.querySelector(".tr_amel").innerHTML = "Rp." + localStorage.kas_amel; 
+             
+            const tunggakan_ila_s = localStorage.kas_ila;
+            const tunggakan_ila = localStorage.tunggakan_ila;
+            localStorage.setItem("tunggakan_ila", +tunggakan_ila + +tunggakan_ila_s);
+            document.querySelector(".tg_ila").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_ila;
+            localStorage.setItem("kas_ila", 3000);
+            document.querySelector(".tr_ila").innerHTML = "Rp." + localStorage.kas_ila; 
+         
+            
+             
+            const tunggakan_mualim_s = localStorage.kas_mualim;
+            const tunggakan_mualim = localStorage.tunggakan_mualim;
+            localStorage.setItem("tunggakan_mualim", +tunggakan_mualim + +tunggakan_mualim_s);
+            document.querySelector(".tg_mualim").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_mualim;
+            localStorage.setItem("kas_mualim", 3000);
+            document.querySelector(".tr_mualim").innerHTML = "Rp." + localStorage.kas_mualim; 
+         }
+         
+        }
+        
+        document.querySelector(".tg_arij").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_arij;
+        document.querySelector(".tr_arij").innerHTML = "Rp." + localStorage.kas_arij;
+        
+        
+        function arijBayar(){
+         if(localStorage.kas_arij>>1){
+            const bayar_kas_arij = 500;
+            const kas_arij = localStorage.kas_arij;
+            const total_uang = localStorage.total_uang;
+            localStorage.setItem("total_uang", +total_uang + +bayar_kas_arij);
+            localStorage.setItem("kas_arij", +kas_arij - +bayar_kas_arij);
+            document.querySelector(".tr_arij").innerHTML = " Rp." + localStorage.kas_arij;
+            
+            const penghasilan_s = localStorage.penghasilan_s;
+            localStorage.setItem("penghasilan_s", +penghasilan_s + +bayar_kas_arij);
+            
+         }
+         
+        }
+        
+        document.querySelector(".tg_arwani").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_arwani;
+        document.querySelector(".tr_arwani").innerHTML = "Rp." + localStorage.kas_arwani;
+        
+        
+        function arwaniBayar(){
+         if(localStorage.kas_arwani>>1){
+            const bayar_kas_arwani = 500;
+            const kas_arwani = localStorage.kas_arwani;
+            const total_uang = localStorage.total_uang;
+            localStorage.setItem("total_uang", +total_uang + +bayar_kas_arwani);
+            localStorage.setItem("kas_arwani", +kas_arwani - +bayar_kas_arwani);
+            document.querySelector(".tr_arwani").innerHTML = " Rp." + localStorage.kas_arwani;
+            
+            const penghasilan_s = localStorage.penghasilan_s;
+            localStorage.setItem("penghasilan_s", +penghasilan_s + +bayar_kas_arwani);
+            
+         }
+         
+        }
+            
+        document.querySelector(".tg_ayu").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_ayu;
+        document.querySelector(".tr_ayu").innerHTML = "Rp." + localStorage.kas_ayu;
+        
+        
+        function ayuBayar(){
+         if(localStorage.kas_ayu>>1){
+            const bayar_kas_ayu = 500;
+            const kas_ayu = localStorage.kas_ayu;
+            const total_uang = localStorage.total_uang;
+            localStorage.setItem("total_uang", +total_uang + +bayar_kas_ayu);
+            localStorage.setItem("kas_ayu", +kas_ayu - +bayar_kas_ayu);
+            document.querySelector(".tr_ayu").innerHTML = " Rp." + localStorage.kas_ayu;
+            
+            const penghasilan_s = localStorage.penghasilan_s;
+            localStorage.setItem("penghasilan_s", +penghasilan_s + +bayar_kas_ayu);
+            
+         }
+         
+        }    
+            
+           
+        document.querySelector(".tg_cari").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_cari;
+        document.querySelector(".tr_cari").innerHTML = "Rp." + localStorage.kas_cari;
+        
+        
+        function cariBayar(){
+         if(localStorage.kas_cari>>1){
+            const bayar_kas_cari = 500;
+            const kas_cari = localStorage.kas_cari;
+            const total_uang = localStorage.total_uang;
+            localStorage.setItem("total_uang", +total_uang + +bayar_kas_cari);
+            localStorage.setItem("kas_cari", +kas_cari - +bayar_kas_cari);
+            document.querySelector(".tr_cari").innerHTML = " Rp." + localStorage.kas_cari;
+            
+            const penghasilan_s = localStorage.penghasilan_s;
+            localStorage.setItem("penghasilan_s", +penghasilan_s + +bayar_kas_cari);
+            
+         }
+         
+        }    
+        
+        document.querySelector(".tg_amel").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_amel;
+        document.querySelector(".tr_amel").innerHTML = "Rp." + localStorage.kas_amel;
+        
+        
+        function amelBayar(){
+         if(localStorage.kas_amel>>1){
+            const bayar_kas_amel = 500;
+            const kas_amel = localStorage.kas_amel;
+            const total_uang = localStorage.total_uang;
+            localStorage.setItem("total_uang", +total_uang + +bayar_kas_amel);
+            localStorage.setItem("kas_amel", +kas_amel - +bayar_kas_amel);
+            document.querySelector(".tr_amel").innerHTML = " Rp." + localStorage.kas_amel;
+            
+            const penghasilan_s = localStorage.penghasilan_s;
+            localStorage.setItem("penghasilan_s", +penghasilan_s + +bayar_kas_amel);
+            
+         }
+         
+        } 
+
+        document.querySelector(".tg_ila").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_ila;
+        document.querySelector(".tr_ila").innerHTML = "Rp." + localStorage.kas_ila;
+        
+        
+        function ilaBayar(){
+         if(localStorage.kas_ila>>1){
+            const bayar_kas_ila = 500;
+            const kas_ila = localStorage.kas_ila;
+            const total_uang = localStorage.total_uang;
+            localStorage.setItem("total_uang", +total_uang + +bayar_kas_ila);
+            localStorage.setItem("kas_ila", +kas_ila - +bayar_kas_ila);
+            document.querySelector(".tr_ila").innerHTML = " Rp." + localStorage.kas_ila;
+            
+            const penghasilan_s = localStorage.penghasilan_s;
+            localStorage.setItem("penghasilan_s", +penghasilan_s + +bayar_kas_ila);
+            
+         }
+         
+        } 
+        
+        document.querySelector(".tg_mualim").innerHTML = "Tunggakan = Rp." + localStorage.tunggakan_mualim;
+        document.querySelector(".tr_mualim").innerHTML = "Rp." + localStorage.kas_mualim;
+        
+        
+        function mualimBayar(){
+         if(localStorage.kas_mualim>>1){
+            const bayar_kas_mualim = 500;
+            const kas_mualim = localStorage.kas_mualim;
+            const total_uang = localStorage.total_uang;
+            localStorage.setItem("total_uang", +total_uang + +bayar_kas_mualim);
+            localStorage.setItem("kas_mualim", +kas_mualim - +bayar_kas_mualim);
+            document.querySelector(".tr_mualim").innerHTML = " Rp." + localStorage.kas_mualim;
+            
+            const penghasilan_s = localStorage.penghasilan_s;
+            localStorage.setItem("penghasilan_s", +penghasilan_s + +bayar_kas_mualim);
+            
+         }
+         
+        } 
+        
+            function home(){
+                window.location.replace('test.html');
+            }
+        
+        const bd = document.querySelector("body");
+           if(localStorage.st_g=="background"){
+               bd.style.backgroundImage = "url('background~2.jpeg')";
+           }
+           if(localStorage.st_g=="background1"){
+               bd.style.backgroundImage = "url('background1~2.jpeg')";
+           }
+           if(localStorage.st_g=="background2"){
+               bd.style.backgroundImage = "url('background2~2.jpeg')";
+           }
+           if(localStorage.st_g=="background4"){
+               bd.style.backgroundImage = "url('background4~2.jpeg')";
+           }
+    </script>
+</body>
+</html>
