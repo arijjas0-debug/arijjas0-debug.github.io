@@ -1,0 +1,344 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+    background-image: url('background.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: fantasy;
+  
+}
+nav {
+   
+    
+}
+nav ul {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: -10px;
+}
+nav li {
+    height: 50px;
+}
+nav a {
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+.os a:hover {
+    background-color: #00000086;
+}
+nav li:first-child {
+    margin-right: auto;
+}
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color: 
+    box-shadow: -10px 0 10px #00000095;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+}
+.sidebar li {
+    width: 100%;
+    margin-top: 10px;
+}
+.sidebar a {
+    width: 100%;
+}
+.menu {
+    height: 20px;
+    width: 20px;
+    background-image: url('menu.png');
+    display: none;
+}
+.menu:hover {
+    
+}
+.me {
+    height: 40px;
+}
+.close {
+    height: 20px;
+    width: 20px;
+    font-family: bold;
+    margin-top: 5px;
+    margin-left: 20px;
+    font-size: 35px;
+    
+}
+.home {
+    margin-left: 20px;
+}
+.cl {
+    
+}
+.os {
+    backdrop-filter: blur(3px);
+    background-color: #ffffff4a;
+    box-shadow: 2px 2px 5px #00000095;
+}
+.sidebar {
+    backdrop-filter: blur(10px);
+    background-color: #ffffff25;
+    
+}
+.sidebar li {
+    
+}
+@media(max-width: 700px){
+    .hideOnMobile{
+        display: none;
+    }
+    .menu{
+        display: block;
+    }
+    .z{
+        width: 70px
+    }
+}
+@media(max-width: 400px){
+    .sidebar {
+        width: 100%;
+    }
+}
+video {
+    height: 140px;
+    border-radius: 80px;
+}
+.utama {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px;
+    text-align: center;
+}
+.masuk,ambil {
+    display: flex;
+    flex-direction: row;
+}
+.ambil2 {
+    background-color: #ffffff23;
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    
+    font-family: "Courier New";
+    font-size: 15px;
+}
+.ambil2 input {
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    text-align: start;
+    background-color: #00000065;
+    color: yellow;
+}
+ambil2 label {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.alasan {
+    height: 30px;
+    
+}
+.masuk2 {
+    background-color: yellow;
+    display: none;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 0px;
+}
+.masuk2 input {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+masuk2 label {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.dari {
+    height: 50px;
+}
+.ambil,masuk2 {
+    height: 80px;
+ 
+}
+.container {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+ 
+    min-height: 100px;
+    width: 90%;
+   
+    overflow: auto;
+}
+.container .z {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    
+    min-height: 40px;
+    flex-grow: 1;
+}
+.container li {
+    height: 40px;
+    list-style: none;
+    word-wrap: break-word;
+    font-size: 11px;
+    color: white;
+  
+}
+.ambil1 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 90px;
+    border-radius: 20px;
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+.ambil0 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 90px;
+    border-radius: 20px;
+    border: none;
+    display: none;
+    justify-content: center;
+}
+.total_uang {
+    font-size: 18px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-justify: center;
+    text-shadow: 2px 2px 1px black;
+}
+.jumlah_ambil button {
+    width: 50px;
+    margin-left: 3px;
+    margin-right: 3px;
+    background-color: aqua;
+    box-shadow: 2px 2px 3px aqua;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 50px;
+    height: 15px;
+    border-radius: 20px;
+    font-family: fantasy;
+    border: none;
+    color: blue;
+}
+.jumlah_ambil button:hover {
+    
+}
+.jumlah_ambil {
+    margin-top: 0px;
+}
+#date {
+    font-size: ;
+}
+
+.label {
+    display: flex;
+    flex-direction: row;
+    
+}
+.riwayat {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 150px;
+    height: 20px;
+    border-radius: 20px;
+    border: none;
+    margin-left: 5px;
+    background-color: yellow;
+    box-shadow: 2px 2px 5px yellow;
+    font-family: "Courier New";
+    margin-right: 5px;
+}
+.wadah {
+    display: flex;
+    flex-direction: row;
+    
+}
+@media(max-width: 370px){
+    .ambil2{
+        width: 90%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+}
+h5 {
+    position: fixed;
+    margin-top: 350px;
+    margin-left: 200px;
+    font-size: 10px;
+    display: none;
+    
+}
+#plus {
+    color: #52ff00;
+}
+#min {
+    color: red;
+    margin-top: 350px;
+    opacity: 0;
+}
+@keyframes plusmin {
+    0% {
+        margin-top: 350px;
+        opacity: 1;
+    }
+    
+        
+    
+    100% {
+        margin-top: 325px;
+        opacity: 0;
+    }
+}
+@keyframes button {
+    0% {
+        background-color: aqua;
+        box-shadow: 2px 2px 3px aqua;
+        
+    }
+    50% {
+        background-color: #002fff;
+        box-shadow: 2px 2px 3px #002fff;
+        color: white;
+    }
+    100% {
+        background-color: aqua;
+        box-shadow: 2px 2px 3px aqua;
+    }
+}
