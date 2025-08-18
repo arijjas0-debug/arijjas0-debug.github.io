@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial scale=1.0"/>
+    <title>Tema</title>
+    <link rel="stylesheet" href="tema.css"
+</head>
+<body>
+    <h1>Tema</h1>
+    <ul>
+        <video autoplay muted loop class="v1" onClick="c1()">
+            <source src="shiroko.mp4" type="video/mp4"></source>
+        </video>
+        <video autoplay muted loop class="v2" onClick="c2()">
+            <source src="neko1.mp4" type="video/mp4"></source>
+        </video>
+        <video autoplay muted loop class="v3" onClick="c3()">
+            <source src="neko2.mp4" type="video/mp4"></source>
+        </video>
+        <video autoplay muted loop class="v4" onClick="c4()">
+            <source src="furina.mp4" type="video/mp4"></source>
+        </video>
+    </ul>
+    <ol>
+        <li class="b1" onClick="g1()"></li>
+        <li class="b2" onClick="g2()"></li>
+        <li class="b3" onClick="g3()"></li>
+        <li class="b4" onClick="g4()"></li>
+    </ol>
+    <button onclick="back()">Selesai</button>
+    <script>
+        const v1 = document.querySelector(".v1");
+        const v2 = document.querySelector(".v2");
+        const v3 = document.querySelector(".v3");
+        const v4 = document.querySelector(".v4");
+        const b1 = document.querySelector(".b1");
+        const b2 = document.querySelector(".b2");
+        const b3 = document.querySelector(".b3");
+        const b4 = document.querySelector(".b4");
+        function c1(){
+            v1.style.border = "solid 3px cyan";
+            v2.style.border = "none";
+            v3.style.border = "none";
+            v4.style.border = "none";
+            localStorage.setItem("st_v", "shiroko");
+        }
+        function c2(){
+            v1.style.border = "none";
+            v2.style.border = "solid 3px cyan";
+            v3.style.border = "none";
+            v4.style.border = "none";
+            localStorage.setItem("st_v", "neko1");
+        }
+        function c3(){
+            v1.style.border = "none";
+            v2.style.border = "none";
+            v3.style.border = "solid 3px cyan";
+            v4.style.border = "none";
+            localStorage.setItem("st_v", "neko2");
+        }
+        function c4(){
+            v1.style.border = "none";
+            v2.style.border = "none";
+            v3.style.border = "none";
+            v4.style.border = "solid 3px cyan";
+            localStorage.setItem("st_v", "furina");
+        }
+        function g1(){
+            b1.style.border = "solid 3px cyan";
+            b2.style.border = "none";
+            b3.style.border = "none";
+            b4.style.border = "none";
+            localStorage.setItem("st_g", "background");
+        }
+        function g2(){
+            b1.style.border = "none";
+            b2.style.border = "solid 3px cyan";
+            b3.style.border = "none";
+            b4.style.border = "none";
+            localStorage.setItem("st_g", "background1");
+        }
+        function g3(){
+            b1.style.border = "none";
+            b2.style.border = "none";
+            b3.style.border = "solid 3px cyan";
+            b4.style.border = "none";
+            localStorage.setItem("st_g", "background2");
+        }
+        function g4(){
+            b1.style.border = "none";
+            b2.style.border = "none";
+            b3.style.border = "none";
+            b4.style.border = "solid 3px cyan";
+            localStorage.setItem("st_g", "background4");
+        }
+        if(localStorage.st_v=="shiroko"){
+            v1.style.border = "solid 3px cyan";
+            v2.style.border = "none";
+            v3.style.border = "none";
+            v4.style.border = "none";
+            localStorage.setItem("st_v", "shiroko");
+        }
+        if(localStorage.st_v=="neko1"){
+            v1.style.border = "none";
+            v2.style.border = "solid 3px cyan";
+            v3.style.border = "none";
+            v4.style.border = "none";
+            localStorage.setItem("st_v", "neko1");
+        }
+        if(localStorage.st_v=="neko2"){
+            v1.style.border = "none";
+            v2.style.border = "none";
+            v3.style.border = "solid 3px cyan";
+            v4.style.border = "none";
+            localStorage.setItem("st_v", "neko2");
+        }
+        if(localStorage.st_v=="furina"){
+            v1.style.border = "none";
+            v2.style.border = "none";
+            v3.style.border = "none";
+            v4.style.border = "solid 3px cyan";
+            localStorage.setItem("st_v", "furina");
+        }
+        if(localStorage.st_g=="background"){
+            b1.style.border = "solid 3px cyan";
+            b2.style.border = "none";
+            b3.style.border = "none";
+            b4.style.border = "none";
+            localStorage.setItem("st_g", "background");
+        }
+        if(localStorage.st_g=="background1"){
+            b1.style.border = "none";
+            b2.style.border = "solid 3px cyan";
+            b3.style.border = "none";
+            b4.style.border = "none";
+            localStorage.setItem("st_g", "background1");
+        }
+        if(localStorage.st_g=="background2"){
+            b1.style.border = "none";
+            b2.style.border = "none";
+            b3.style.border = "solid 3px cyan";
+            b4.style.border = "none";
+            localStorage.setItem("st_g", "background2");
+        }
+        if(localStorage.st_g=="background4"){
+            b1.style.border = "none";
+            b2.style.border = "none";
+            b3.style.border = "none";
+            b4.style.border = "solid 3px cyan";
+            localStorage.setItem("st_g", "background4");
+        }
+        function back(){
+            window.location.replace("test.html");
+        }
+    </script>
+</body>
