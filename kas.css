@@ -52,6 +52,9 @@ nav .reset {
     margin-top: 15px;
     justify-content: center;;
 }
+.kas_harian div:hover {
+    background-color: #00000069;
+}
 .wadah button {
     margin: 8px;
     width: 150px;
@@ -175,6 +178,7 @@ nav .reset {
 dialog {
     height: 30px;
     width: 200px;
+    background-color: #0000003f;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -183,6 +187,7 @@ dialog {
 }
 dialog input {
     margin-bottom: 10px;
+    
 }
 #ol {
     color: red;
