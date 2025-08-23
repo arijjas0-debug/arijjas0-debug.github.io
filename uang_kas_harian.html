@@ -373,6 +373,8 @@
             localStorage.setItem("status_tu", "lia");
         }
         function ok(){
+            const click = document.getElementById("suaraClick");
+            click.play();
             const bayar_tunggakan = document.getElementById("tu").value;
             const isi = document.getElementById("tu");
             if(localStorage.status_tu=="alam"){
