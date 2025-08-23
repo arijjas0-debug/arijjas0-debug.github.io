@@ -26,6 +26,7 @@
             animation-iteration-count = infinite;
         }
     </style>
+
     <audio id="suaraClick" src="bell.mp3"></audio>
     <h5 id="plus">+Rp.8000</h5>
     <h5 id="min">Rp</h5>
@@ -74,7 +75,7 @@
         
         </div>
         <div class="wadah">
-         <button onClick="tampilkan()" class="riwayat">Tampilkan Riwayat</button>
+         <button onClick="tampilkan()" class="riwayat" id="tampil">Tampilkan Riwayat</button>
          <button onClick="sembunyikan()" class="riwayat">sembunyikan</button>
         </div>
         <div class="container">
@@ -95,8 +96,8 @@
             </ul>
         </div>
     </div>
-    <script>
-        
+    <script> 
+       
         const plus = document.getElementById("plus");
         const min = document.getElementById("min");
         document.querySelector(".total_uang").innerHTML = "Rp." + localStorage.total_uang;

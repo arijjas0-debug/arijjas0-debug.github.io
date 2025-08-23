@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
+    
     <div class="wrap">
         <h2 class="a">Uang Kas</h2>
         <h1>XI TKJ 1</h1>
@@ -21,7 +22,7 @@
             <div id="salah" class="salah"></div>
             <button onClick="masuk()">Masuk</button>
         </dialog>
-        <button onClick="masuk1()">masuk</button>
+        <button onClick="masuk1()" id="hi">masuk</button>
         <div class="by">By Arij</div>   
     </div>
     
@@ -38,10 +39,11 @@
   
         function masuk(){
             const pass = document.getElementById("pass").value;
-      
+            document.getElementById("hi").style.display = "none";
             if(pass=="Nouzen"){
                 alert('Berhasil login');
                 sessionStorage.setItem("anjay", " ankay");
+                
                 window.location.replace("test.html");
             }else if(1>>pass.length){
                 document.getElementById("salah").innerHTML = "Password belum diisi";

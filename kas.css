@@ -2,19 +2,23 @@
     margin: 
     padding: 
 }
+button:active {
+    transform: scale(0.99);
+}
 nav .home {
     height: 30px;
     border: none;
     width: 30px;
     background-image: url('home.png');
     background-size: cover;
+    background-repeat: no-repeat;
     margin-right: 5px;
     background-position: center;
     box-shadow: 2px 2px 3px white;
     border-radius: 80px;
 }
 body {
-    height: 100vh;;
+   
     background-image: url('background~2.jpeg');
     background-size: cover;
     background-position: center;
@@ -60,7 +64,8 @@ nav .reset {
 .kas_riwayat {
     display: none;
     flex-direction: space-between;
-    
+    height: 100px;
+    overflow: auto;
     margin-left: 10px;
 }
 .kas_riwayat ul {
@@ -87,6 +92,10 @@ nav .reset {
     flex-direction: column;
     justify-content: center;
     
+}
+.kas_harian {
+    height: 400px;
+    overflow: auto;
 }
 .kas_harian div {
     margin-left: 4px;

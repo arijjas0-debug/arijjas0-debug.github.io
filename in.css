@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
 }
+button:active {
+    transform: scale(0.9);
+}
 body {
     min-height: 100vh;
     background-image: url('background.jpeg');
@@ -204,6 +207,7 @@ masuk2 label {
     flex-direction: column-reverse;
     align-items: center;
     
+   
     min-height: 40px;
     flex-grow: 1;
 }
