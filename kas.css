@@ -176,18 +176,21 @@ nav .reset {
     }
 }
 dialog {
-    height: 30px;
+    height: 100px;
     width: 200px;
     background-color: #0000003f;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    display: flex;
+    margin-top: 200px;
     
 }
 dialog input {
     margin-bottom: 10px;
-    
+    border-radius: 5px;
+    border: none;
+}
+dialog button {
+    width: 70px;
+    border-radius: 5px;
+    border: none;
 }
 #ol {
     color: red;

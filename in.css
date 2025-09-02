@@ -196,8 +196,9 @@ masuk2 label {
     display: none;
     flex-direction: row;
     justify-content: center;
- 
     min-height: 100px;
+    background-color: #00000043;
+    backdrop-filter: blur(5px);
     width: 90%;
    
     overflow: auto;
@@ -303,17 +304,18 @@ masuk2 label {
 }
 h5 {
     position: fixed;
-    margin-top: 350px;
-    margin-left: 200px;
+    margin-top: 50%;
+    margin-left: 60%;
     font-size: 10px;
-    display: none;
+    
     
 }
 #plus {
     color: #52ff00;
+    opacity: 0;
 }
 #min {
-    color: red;
+    color: #ff0036;
     margin-top: 350px;
     opacity: 0;
 }
