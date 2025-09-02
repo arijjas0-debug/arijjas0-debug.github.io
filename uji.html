@@ -1,17 +1,451 @@
-<ul>
-    <ul>
-        <li><span></span></li>
-        <li>Beli sapu</li>
-        <li>-RP8000</li>
-    </ul>
-</ul>
-<input id="newitem1" type="text">
-<input id="newitem2" type="text">
-<button onclick="addm()" id="b">Tambah Item</button>
-<video autoplay muted loop>
-    <source src="shiroko.mp4" type="video/mp4">
-</video>
-<audio src="citampi1.mp3" id="bs" autoplay loop></audio>
-<script>
-    
-</script>
+<!DOCTYPE html>
+<html lang="in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="log.css">
+    <link rel="preload" href="awan2.jpg" as="image">
+
+</head>
+<body>
+    <style>
+        @keyframes pages1 {
+            0% {
+                display: flex;
+                position: relative;
+                opacity: 1;
+                transform: scale(1.1);
+            }
+            99% {
+                display: flex;
+                opacity: 0;
+                top: 0px;
+                position: relative;
+                transform: scale(1.4);
+            }
+            100% {
+                position: fixed;
+                top: 300px;
+                display: block;
+                opacity: 0;
+                transform: scale(1.4);
+            }
+        }
+        @keyframes pages1_back {
+            0% {
+                position: fixed;
+             
+                opacity: 0;
+                transform: scale(1.4);
+                
+            }
+            10% {
+                display: none;
+                opacity: 0;
+                position: relative;
+                transform: scale(1.4);
+            }
+            100% {
+               
+                position: relative;
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+   
+        @keyframes video {
+            0% {
+                display: flex;
+                opacity: 1;
+            }
+            99% {
+                display: flex;
+                opacity: 0;
+            }
+            100% {
+                display: none;
+                opacity: 0;
+            }
+        }
+        @keyframes video_back {
+            0% {
+                display: none;
+                opacity: 0;
+            }
+            1% {
+                display: flex;
+                opacity: 0;
+            }
+            100% {
+                display: flex;
+                opacity: 1;
+            }
+        }
+        @keyframes pages2 {
+            0% {
+                position: fixed;
+                bottom: 0px;
+                
+                opacity: 0;
+                transform: scale(0.6);
+            }
+            1% {
+                position: relative;
+                bottom: 40px;
+                display: flex;
+                opacity: 0;
+                transform: scale(0.6);
+                
+            }
+            100% {
+                position: relative;
+                display: flex;
+                bottom: 40px;
+            
+                opacity: 1;
+                transform: scale(0.8);
+            }
+        }
+        @keyframes pages2_back {
+            0% {
+                
+                position: relative;
+                bottom: 40px;
+                display: flex;
+                opacity: 1;
+                transform: scale(0.8);
+            }
+           
+            100% {
+                position: fixed;
+                display: none;
+                opacity: 0;
+                transform: scale(0.6);
+            }
+        }
+        @keyframes pg1 {
+            0% {
+                display: flex;
+                opacity: 1;
+                position: relative;
+                top: 0px;
+            }
+            99% {
+                display: flex;
+                opacity: 0;
+                position: relative;
+                top: -60px;
+                
+            }
+            100% {
+                display: none;
+                opacity: 0;
+                position: fixed;
+                top: 300px;
+            }
+        }
+        @keyframes pg2 {
+            0% {
+                display: flex;
+                opacity: 1;
+                position: relative;
+                top: 0px;
+            }
+            99% {
+                display: flex;
+                opacity: 0;
+                position: relative;
+                top: 60px;
+                
+            }
+            100% {
+                display: none;
+                opacity: 0;
+                top: 300px;
+                position: fixed;
+            }
+        }
+        @keyframes pages3 {
+            0% {
+                display: none;
+                position: fixed;
+                opacity: 0;
+                transform: scale(0.7);
+            }
+            1% {
+                display: flex;
+                opacity: 0;
+                position: relative;
+                transform: scale(0.7);
+            }
+            100% {
+                display: flex;
+                opacity: 1;
+                position: static;
+                transform: scale(0.9);
+               
+            }
+        }
+        audio {
+            position: fixed;
+            top: 300px;
+        }
+    </style>
+    <audio src="open.mp3" id="open"></audio>
+    <audio src="mai.mp3" id="bs" loop></audio>
+    <dialog>
+        <h4>Hubungi developer ya :)</h4></h4>
+        <button onclick="out()">Ya</button>
+    </dialog>
+    <video class="vd" autoplay loop muted>
+        <source src="shiroko.mp4" type="video/mp4">
+    </video>
+    <div class="container">
+     <div class="pages1">
+        <div><h4>UANG KAS XI TKJ 1</h4></div>
+        <h6>Digital</h6>
+        <button onClick="pages1()"><h5><u>mulai</u></h5></button>
+        
+     </div>
+     <div class="pages2">
+        <div class="pg1">
+            <div class="si">
+             
+             <h4>Sistem Uang Kas</h4>
+            </div>
+            <h5>___________________________________</h5>
+            <h5>Bendahara : Tiara Khilyatunnisa</h5>
+      
+            <h5>Wali kelas : Sofiyatun,S.Kom</h5>
+            <h5>Kelas : XI TKJ 1</h5>
+        </div>
+        <div class="pg2">
+         <h4>Persetujuan</h4>
+         <h5>Data dari web ini akan hilang jika pengguna menghapus cache/data aplikasi, jika data hilang itu di luar tanggung jawab developer</h5>
+         <div class="check">
+          <input type="checkbox" onclick="check()" class="check">
+          <label><h6>Setuju & lanjutkan</h6></label>
+         </div>
+         <div class="button2">
+          <button onclick="pages2_back()" id="kembali2"><h4><u>Kembali</u></h4></button>
+          <button onClick="lanjut()" id="lanjut2"><h4><u>Lanjut</u></h4></button>
+         </div>
+        </div>
+     </div>
+     <div class="pages3">
+         <video class="zenitsu" autoplay loop muted>
+             <source src="zenitsu.mp4" type="video/mp4"></source>
+         </video>
+         <div class="log">
+          <h3>Password</h3>
+          <div class="pass_wadah">
+           <input id="pass" type="password" placeholder="password..">
+           <div class="eyes" onClick="hideshow()"></div>
+          </div>
+          <h5 id="alert"></h5>
+          <button onclick="login()"class="login"><h4>Login</h4></button>
+          <h5 class="bi" onClick="lupa()"><u>Lupa password</u></h5>
+         </div>
+     </div>
+    </div>
+    <h5 class="h5">By Arij</h5>
+    <script>
+        
+
+
+  document.addEventListener("visibilitychange", function() {
+    if (document.hidden) {
+      document.getElementById("bs").pause();
+    } else {
+      document.getElementById("bs").play();
+    }
+  });
+
+  window.onunload = function() {
+    document.getElementById("bs").pause();
+  };
+
+
+        const foto = new Image();
+        foto.src = "bg.jpeg";
+        
+        sessionStorage.setItem("ijin_pages1", "yes");
+        
+        const lp = document.querySelector("dialog");
+        function lupa(){
+            lp.showModal();
+        }
+        function out(){
+            lp.close();
+        }
+        const eyes = document.querySelector(".eyes");
+        const body = document.querySelector("body");
+        const vd = document.querySelector(".vd");
+        const pg1 = document.querySelector(".pages1");
+        const pg2 = document.querySelector(".pages2");
+        const alert = document.getElementById("alert");
+        const pass = document.getElementById("pass");
+        const pg2_1 = document.querySelector(".pg1");
+        const pg2_2 = document.querySelector(".pg2");
+        const pg3 = document.querySelector(".pages3");
+        function login(){
+           if(sessionStorage.ijin_pages3=="yes"){
+            const pass = document.getElementById("pass").value;
+            if(1>>pass.length){
+                alert.innerHTML = "Password harus diisi!";
+            }
+            if(pass.length>>1){
+                if(7>=pass.length){
+                    alert.innerHTML = "password tidak boleh kurang dari 8 digit";
+                }
+                if(pass.length>=8){
+                    if(pass==localStorage.password){
+                        alert.style.color = "#00ff04";
+                        alert.innerHTML = "Berhasil login";
+                        sessionStorage.setItem("log", "yes");
+                    }
+                    if(pass!=localStorage.password){
+                        alert.innerHTML = "Password salah";
+                    }
+                }
+                
+            }
+            
+            if(sessionStorage.log=="yes"){
+               setTimeout(() => {
+                   window.location.replace('test.html');
+              }, 2000);
+                
+            }
+           }
+        }
+        function hideshow(){
+            if(localStorage.st_show=="show"){
+                pass.type="password";
+                pass.style.transition = "1s";
+                localStorage.setItem("st_show", "hide");
+                eyes.style.backgroundImage = "url('hide.png')";
+                eyes.style.transition = "0.5s";
+            }
+            else if(localStorage.st_show=="hide"){
+                pass.type="text";
+                localStorage.setItem("st_show", "show");
+                eyes.style.backgroundImage = "url('show.png')";
+                eyes.style.transition = "0.5s";
+            }
+        }
+        
+        const bs = document.getElementById("bs");
+        const h5 = document.querySelector(".h5");
+        function pages1(){
+           if(sessionStorage.ijin_pages1=="yes"){
+            bs.play();
+            bs.volume = [0.2];
+            vd.style.animation = "video 1s";
+            h5.style.opacity = "0";
+            vd.style.animationFillMode = "forwards";
+            pg1.style.animation = "pages1 0.5s";
+            pg1.style.animationFillMode = "forwards";
+            pg2.style.animation = "pages2 0.5s";
+            pg2.style.animationDelay = "0.5s";
+            pg2.style.animationFillMode = "forwards";
+            sessionStorage.setItem("status_display_pages2", "show");
+            sessionStorage.setItem("ijin_pages1", "");
+            sessionStorage.setItem("ijin_pages2", "yes");
+            body.style.backgroundImage = "url('awan2.jpeg')";
+            body.style.transitionDelay = "0s";
+            body.style.transition = "1s";
+           }
+        }
+        const hide = document.getElementById("lanjut2");
+        function check(){
+         if(sessionStorage.ijin_pages2=="yes"){
+          if(sessionStorage.check=="yes"){
+            sessionStorage.setItem("check", "");
+            hide.style.opacity = "0.5";
+            sessionStorage.setItem("status_button", "");
+          }
+         
+          else{
+            hide.style.opacity = "1";
+            sessionStorage.setItem("check", "yes");
+            sessionStorage.setItem("status_button", "yes");
+          }
+         }
+        }
+        function pages2(){
+           if(sessionStorage.status_display_pages2=="show"){
+            if(sessionStorage.status_button=="yes"){
+                alert('yatta');
+            }
+           }
+           
+        }
+        function pages2_back(){
+           if(sessionStorage.ijin_pages2=="yes"){
+            vd.style.animation = "video_back 1s";
+            vd.style.animationFillMode = "forwards";
+            pg1.style.animation = "pages1_back 1s";
+            body.style.backgroundImage = "url('awan1.jpeg')";
+            body.style.transitionDelay = "0s";
+            
+            pg2.style.animation = "pages2_back 0.001s";
+            h5.style.opacity = "1";
+            h5.style.transition = "0.5s";
+            sessionStorage.setItem("ijin_pages1", "yes");
+      
+            sessionStorage.setItem("ijin_pages2", "");
+            sessionStorage.setItem("status_display_pages2", "");
+           }
+        }
+        const op = document.getElementById("open");
+        
+        function lanjut(){
+           
+          if(sessionStorage.ijin_pages2=="yes"){
+           
+           if(sessionStorage.status_button=="yes"){
+            op.play();
+            op.volume = [0.7];
+            sessionStorage.setItem("ijin_pages3", "yes");
+            sessionStorage.setItem("ijin_pages2", "");
+            body.style.transitionDelay = "0s";
+            pg2_1.style.animation = "pg1 1s";
+            pg2_2.style.animation = "pg2 1s";
+            pg2_1.style.animationFillMode = "forwards";
+            pg2_2.style.animationFillMode = "forwards";
+            pg3.style.animation = "pages3 1s";
+            
+            pg3.style.animationFillMode = "forwards";
+            pg3.style.animationDelay = "1s";
+            body.style.backgroundImage = "url('bg.jpeg')";
+            body.style.transition = "1s";
+            
+           }
+          }
+        }
+        if(localStorage.st_v=="furina"){
+            vd.src = "furina.mp4";
+            vd.load();
+            vd.play();
+        }
+        if(localStorage.st_v=="neko1"){
+            vd.src = "neko1.mp4";
+            vd.load();
+            vd.play();
+        }
+        if(localStorage.st_v=="neko2"){
+            vd.src = "neko2.mp4";
+            vd.load();
+            vd.play();
+        }
+        if(localStorage.st_v=="shiroko"){
+            vd.src = "shiroko.mp4";
+            vd.load();
+            vd.play();
+        }
+    </script>
+</body>
+</html>

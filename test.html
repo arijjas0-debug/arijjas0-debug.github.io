@@ -15,7 +15,10 @@
               opacity: 1;
             }
     
-        
+           50% {
+               margin-top: 350px;
+               opacity: 0.9;
+           }
     
            100% {
              margin-top: 325px;
@@ -25,10 +28,18 @@
         #min {
             animation-iteration-count = infinite;
         }
+        .plus-animate {
+            animation: plusmin 1s;
+        }
+          
+        .min-animate {
+             animation: plusmin 1s;
+         
+        }
     </style>
 
     <audio id="suaraClick" src="bell.mp3"></audio>
-    <h5 id="plus">+Rp.8000</h5>
+    <h5 id="plus">+Rp.</h5>
     <h5 id="min">Rp</h5>
     <nav class="side">
         <ul class="sidebar" id="sidebar">
@@ -37,7 +48,7 @@
             <li><a href="uang_kas_harian.html">Kas harian</a></li>
             <li><a href="https://wa.me/6281546963708?text=Help%20me">Help</a></li>
             <li><a href="tema.html">Tema</a></li>
-            
+            <li><a href="#" onClick="ubah()">Ubah Password</a></li>
             
         </ul>
     </nav>
@@ -48,8 +59,10 @@
             <li class="hideOnMobile"><a href="uang_kas_harian.html">Uang kas harian</a></li>
             <li class="hideOnMobile"><a href="https://wa.me/6281546963708?text=Help%20me">Help</a></li>
             <li class="hideOnMobile"><a href="tema.html">Tema</a></li>
+            <li class="hideOnMobile"><a href="#">Ubah Password</a></li>
           
             <li onClick="sidebar()" <a href="#" class="menu"></a></li>
+            
         </ul>
     </nav>
     <div class="utama">
@@ -97,7 +110,9 @@
         </div>
     </div>
     <script> 
-       
+        function ubah(){
+            alert("fitur ini belum tersedia");
+        }
         const plus = document.getElementById("plus");
         const min = document.getElementById("min");
         document.querySelector(".total_uang").innerHTML = "Rp." + localStorage.total_uang;
@@ -166,6 +181,8 @@
            
            function ambil2() {
                const jum = document.querySelector(".jumlah").value;
+               
+              
                var audio = document.getElementById("suaraClick");
                audio.play();
                const newItemText = localStorage.date;
@@ -186,13 +203,14 @@
                const total_uang = document.querySelector(".jumlah").value;
                
                const newItemText3 = "-Rp" + total_uang;
-               const bo = newItemText3;
-               min.style.display = "flex";
-               min.style.transition = "0.5s";
-               min.style.marginTop = "325px";
-               min.innerHTML = bo;
+               const bo = total_uang;
+           
+               min.innerHTML = "-Rp." + bo;
+               min.classList.add('min-animate');
+               setTimeout (() =>{
+                   min.classList.remove('min-animate');
+               }, 1000);
                
-               min.style.display = "flex";
                
             // Pastikan tidak kosong
                listData3.push(newItemText3);
@@ -220,6 +238,7 @@
            function masuk2() {
                var audio = document.getElementById("suaraClick");
                audio.play();
+               
                const newItemText = localStorage.date;
                if (newItemText.trim() !== '') { // Pastikan tidak kosong
                    listData.push(newItemText);
@@ -236,8 +255,15 @@
                document.getElementById('alasan').value = ''; // Bersihkan input
                
                const total_uang = document.querySelector(".jumlah").value;
+               const pl = total_uang;
                const newItemText3 = "+Rp" + total_uang;
             // Pastikan tidak kosong
+               plus.innerHTML = "+Rp." + pl;
+               plus.classList.add('plus-animate');
+               setTimeout (() =>{
+                   plus.classList.remove('plus-animate');
+               }, 1000);
+               
                listData3.push(newItemText3);
                const jumlah = document.querySelector(".jumlah");
                saveData();
